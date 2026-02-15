@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zsh / Oh My Zsh - Шпаргалка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #ed8936;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #ed8936;
+            font-size: 1.8em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background-color: #fff5f0;
+        }
+        
+        .command {
+            font-family: 'Courier New', monospace;
+            background-color: #2d3748;
+            color: #ed8936;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .description {
+            color: #4a5568;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Назад к списку</a>
+            <h1>⚡ Zsh / Oh My Zsh</h1>
+            <p class="subtitle">Команды и возможности расширенной оболочки</p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🎨 Основные особенности Zsh</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">setopt</span></td>
+                            <td class="description">Показать все активные опции</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">autoload -U compinit && compinit</span></td>
+                            <td class="description">Включить автодополнение</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Ctrl + R</span></td>
+                            <td class="description">Поиск по истории команд</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd -</span></td>
+                            <td class="description">Вернуться к предыдущей директории</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd -2</span></td>
+                            <td class="description">Перейти на 2 директории назад в истории</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">dirs -v</span></td>
+                            <td class="description">Показать историю директорий</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">take директория</span></td>
+                            <td class="description">Создать и перейти в директорию</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔧 Oh My Zsh команды</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">omz update</span></td>
+                            <td class="description">Обновить Oh My Zsh</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">omz reload</span></td>
+                            <td class="description">Перезагрузить конфигурацию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">omz plugin list</span></td>
+                            <td class="description">Список всех плагинов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">omz theme list</span></td>
+                            <td class="description">Список всех тем</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">nano ~/.zshrc</span></td>
+                            <td class="description">Редактировать конфиг Zsh</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">source ~/.zshrc</span></td>
+                            <td class="description">Применить изменения конфига</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🚀 Полезные алиасы (сокращения)</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Алиас</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">ll</span></td>
+                            <td class="description">ls -lh (подробный список)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">la</span></td>
+                            <td class="description">ls -lAh (с скрытыми файлами)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">l</span></td>
+                            <td class="description">ls -lah</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">..</span></td>
+                            <td class="description">cd .. (на уровень выше)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">...</span></td>
+                            <td class="description">cd ../.. (на два уровня выше)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">~</span></td>
+                            <td class="description">cd ~ (домашняя директория)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">md</span></td>
+                            <td class="description">mkdir -p (создать вложенные папки)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">rd</span></td>
+                            <td class="description">rmdir (удалить пустую папку)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📦 Работа с плагинами Git</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">gst</span></td>
+                            <td class="description">git status</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ga</span></td>
+                            <td class="description">git add</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">gcmsg</span></td>
+                            <td class="description">git commit -m</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">gp</span></td>
+                            <td class="description">git push</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">gl</span></td>
+                            <td class="description">git pull</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">gco</span></td>
+                            <td class="description">git checkout</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">gcb</span></td>
+                            <td class="description">git checkout -b (новая ветка)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">glg</span></td>
+                            <td class="description">git log --stat</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🎯 Умное автодополнение</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Функция</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Tab</span></td>
+                            <td class="description">Автодополнение с подсказками</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd [Tab]</span></td>
+                            <td class="description">Показать только директории</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">kill [Tab]</span></td>
+                            <td class="description">Показать процессы для завершения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git [Tab]</span></td>
+                            <td class="description">Подсказки по командам git</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ssh [Tab]</span></td>
+                            <td class="description">Список известных хостов</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>⚙️ Глобальные алиасы</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Алиас</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">команда | G</span></td>
+                            <td class="description">| grep (поиск в выводе)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | L</span></td>
+                            <td class="description">| less (постраничный просмотр)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | H</span></td>
+                            <td class="description">| head (первые строки)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | T</span></td>
+                            <td class="description">| tail (последние строки)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | WC</span></td>
+                            <td class="description">| wc -l (подсчет строк)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔍 Расширения истории</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">!!</span></td>
+                            <td class="description">Повторить последнюю команду</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">!$</span></td>
+                            <td class="description">Последний аргумент предыдущей команды</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">!^</span></td>
+                            <td class="description">Первый аргумент предыдущей команды</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">!*</span></td>
+                            <td class="description">Все аргументы предыдущей команды</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">!git</span></td>
+                            <td class="description">Последняя команда, начинающаяся с git</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">sudo !!</span></td>
+                            <td class="description">Повторить последнюю команду с sudo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            💡 Чтобы использовать эти возможности, установите <strong>Oh My Zsh</strong>: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        </footer>
+    </div>
+</body>
+</html>

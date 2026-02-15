@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шпаргалка по командам Bash</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-size: 1.8em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background-color: #f7fafc;
+        }
+        
+        .command {
+            font-family: 'Courier New', monospace;
+            background-color: #2d3748;
+            color: #48bb78;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .description {
+            color: #4a5568;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🖥️ Шпаргалка по Bash</h1>
+            <p class="subtitle">Основные команды для работы в терминале</p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📁 Навигация и файлы</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">pwd</span></td>
+                            <td class="description">Показать текущую директорию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ls</span></td>
+                            <td class="description">Список файлов и папок</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ls -la</span></td>
+                            <td class="description">Список с подробностями и скрытыми файлами</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd путь</span></td>
+                            <td class="description">Перейти в указанную директорию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd ..</span></td>
+                            <td class="description">Подняться на уровень выше</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd ~</span></td>
+                            <td class="description">Перейти в домашнюю директорию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">mkdir имя</span></td>
+                            <td class="description">Создать папку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">touch файл</span></td>
+                            <td class="description">Создать пустой файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">rm файл</span></td>
+                            <td class="description">Удалить файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">rm -r папка</span></td>
+                            <td class="description">Удалить папку со всем содержимым</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cp источник цель</span></td>
+                            <td class="description">Скопировать файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">mv источник цель</span></td>
+                            <td class="description">Переместить или переименовать</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📄 Работа с содержимым файлов</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">cat файл</span></td>
+                            <td class="description">Вывести содержимое файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">head файл</span></td>
+                            <td class="description">Показать первые 10 строк</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">tail файл</span></td>
+                            <td class="description">Показать последние 10 строк</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">less файл</span></td>
+                            <td class="description">Просмотр файла (q для выхода)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">grep "текст" файл</span></td>
+                            <td class="description">Поиск текста в файле</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">nano файл</span></td>
+                            <td class="description">Редактировать файл в nano</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">vim файл</span></td>
+                            <td class="description">Редактировать файл в vim</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔧 Системная информация</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">whoami</span></td>
+                            <td class="description">Текущий пользователь</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">date</span></td>
+                            <td class="description">Текущая дата и время</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">df -h</span></td>
+                            <td class="description">Свободное место на дисках</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">du -sh папка</span></td>
+                            <td class="description">Размер папки</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">top</span></td>
+                            <td class="description">Процессы в реальном времени</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ps aux</span></td>
+                            <td class="description">Список всех процессов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">kill PID</span></td>
+                            <td class="description">Завершить процесс по ID</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔗 Права доступа</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">chmod 755 файл</span></td>
+                            <td class="description">Изменить права доступа</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">chown user файл</span></td>
+                            <td class="description">Сменить владельца файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">sudo команда</span></td>
+                            <td class="description">Выполнить с правами root</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🌐 Сеть</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">ping адрес</span></td>
+                            <td class="description">Проверить доступность хоста</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">curl url</span></td>
+                            <td class="description">Получить содержимое URL</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">wget url</span></td>
+                            <td class="description">Скачать файл по URL</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ssh user@host</span></td>
+                            <td class="description">Подключиться по SSH</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">scp файл user@host:путь</span></td>
+                            <td class="description">Скопировать файл по SSH</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>⚡ Полезные комбинации</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Ctrl + C</span></td>
+                            <td class="description">Прервать выполнение команды</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Ctrl + D</span></td>
+                            <td class="description">Выход (EOF)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Ctrl + L</span></td>
+                            <td class="description">Очистить экран (как clear)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Tab</span></td>
+                            <td class="description">Автодополнение</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">↑ / ↓</span></td>
+                            <td class="description">История команд</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">history</span></td>
+                            <td class="description">Показать историю команд</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">clear</span></td>
+                            <td class="description">Очистить экран терминала</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            💡 Совет: используйте <span class="command">man команда</span> для просмотра полной документации любой команды
+        </footer>
+    </div>
+</body>
+</html>

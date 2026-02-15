@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMD / Windows - Шпаргалка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #718096;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #718096;
+            font-size: 1.8em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background-color: #f7fafc;
+        }
+        
+        .command {
+            font-family: 'Courier New', monospace;
+            background-color: #2d3748;
+            color: #cbd5e0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .description {
+            color: #4a5568;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Назад к списку</a>
+            <h1>⌨️ CMD / Windows</h1>
+            <p class="subtitle">Классическая командная строка Windows</p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📁 Навигация и файлы</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">cd</span></td>
+                            <td class="description">Показать текущую директорию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd путь</span></td>
+                            <td class="description">Перейти в директорию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd ..</span></td>
+                            <td class="description">На уровень выше</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">cd \</span></td>
+                            <td class="description">В корень диска</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">D:</span></td>
+                            <td class="description">Перейти на диск D</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">dir</span></td>
+                            <td class="description">Список файлов и папок</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">dir /a</span></td>
+                            <td class="description">Показать скрытые файлы</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">dir /s</span></td>
+                            <td class="description">Рекурсивный список (со всеми подпапками)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">tree</span></td>
+                            <td class="description">Древовидная структура папок</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">mkdir папка</span></td>
+                            <td class="description">Создать папку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">rmdir папка</span></td>
+                            <td class="description">Удалить пустую папку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">rmdir /s папка</span></td>
+                            <td class="description">Удалить папку со всем содержимым</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">del файл</span></td>
+                            <td class="description">Удалить файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">copy источник цель</span></td>
+                            <td class="description">Скопировать файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">xcopy источник цель /E</span></td>
+                            <td class="description">Скопировать папку со всем содержимым</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">move источник цель</span></td>
+                            <td class="description">Переместить файл или папку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ren старое новое</span></td>
+                            <td class="description">Переименовать файл</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📄 Работа с файлами</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">type файл</span></td>
+                            <td class="description">Вывести содержимое файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">more файл</span></td>
+                            <td class="description">Постраничный просмотр</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">echo текст > файл</span></td>
+                            <td class="description">Записать текст в файл (перезапись)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">echo текст >> файл</span></td>
+                            <td class="description">Добавить текст в конец файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">find "текст" файл</span></td>
+                            <td class="description">Поиск текста в файле</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">findstr "текст" файл</span></td>
+                            <td class="description">Расширенный поиск (с regex)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">notepad файл</span></td>
+                            <td class="description">Открыть в Блокноте</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">start файл</span></td>
+                            <td class="description">Открыть файл в ассоциированной программе</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">attrib файл</span></td>
+                            <td class="description">Показать атрибуты файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">attrib +h файл</span></td>
+                            <td class="description">Сделать файл скрытым</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">attrib -h файл</span></td>
+                            <td class="description">Убрать атрибут "скрытый"</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔧 Системная информация</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">systeminfo</span></td>
+                            <td class="description">Полная информация о системе</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">hostname</span></td>
+                            <td class="description">Имя компьютера</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">whoami</span></td>
+                            <td class="description">Текущий пользователь</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">date</span></td>
+                            <td class="description">Текущая дата</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">time</span></td>
+                            <td class="description">Текущее время</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ver</span></td>
+                            <td class="description">Версия Windows</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">tasklist</span></td>
+                            <td class="description">Список запущенных процессов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">taskkill /IM имя.exe</span></td>
+                            <td class="description">Завершить процесс по имени</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">taskkill /PID номер</span></td>
+                            <td class="description">Завершить процесс по PID</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">taskkill /F /IM имя.exe</span></td>
+                            <td class="description">Принудительно завершить процесс</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>💾 Диски и память</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">vol</span></td>
+                            <td class="description">Метка тома диска</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">diskpart</span></td>
+                            <td class="description">Утилита управления дисками</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">chkdsk</span></td>
+                            <td class="description">Проверка диска на ошибки</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">defrag C:</span></td>
+                            <td class="description">Дефрагментация диска</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">format D:</span></td>
+                            <td class="description">Форматировать диск D</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🌐 Сеть</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">ping адрес</span></td>
+                            <td class="description">Проверить доступность хоста</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ping -t адрес</span></td>
+                            <td class="description">Непрерывный ping (до Ctrl+C)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">tracert адрес</span></td>
+                            <td class="description">Трассировка маршрута</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ipconfig</span></td>
+                            <td class="description">Настройки сетевых интерфейсов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ipconfig /all</span></td>
+                            <td class="description">Подробная информация о сети</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ipconfig /release</span></td>
+                            <td class="description">Освободить IP-адрес</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ipconfig /renew</span></td>
+                            <td class="description">Обновить IP-адрес</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">ipconfig /flushdns</span></td>
+                            <td class="description">Очистить кэш DNS</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">netstat</span></td>
+                            <td class="description">Активные сетевые соединения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">netstat -ano</span></td>
+                            <td class="description">Соединения с PID процессов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">nslookup домен</span></td>
+                            <td class="description">Узнать IP-адрес домена</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">arp -a</span></td>
+                            <td class="description">Таблица ARP</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">route print</span></td>
+                            <td class="description">Таблица маршрутизации</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>👤 Пользователи</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">net user</span></td>
+                            <td class="description">Список пользователей</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">net user имя</span></td>
+                            <td class="description">Информация о пользователе</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">net user имя пароль /add</span></td>
+                            <td class="description">Создать пользователя</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">net user имя /delete</span></td>
+                            <td class="description">Удалить пользователя</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">net localgroup</span></td>
+                            <td class="description">Список локальных групп</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>⚡ Полезные команды</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">cls</span></td>
+                            <td class="description">Очистить экран</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">help</span></td>
+                            <td class="description">Список всех команд</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда /?</span></td>
+                            <td class="description">Справка по команде</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">title Новое название</span></td>
+                            <td class="description">Изменить заголовок окна</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">color 0A</span></td>
+                            <td class="description">Изменить цвет текста (зеленый на черном)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">prompt текст$G</span></td>
+                            <td class="description">Изменить приглашение командной строки</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">pause</span></td>
+                            <td class="description">Приостановить выполнение</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">exit</span></td>
+                            <td class="description">Закрыть командную строку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">shutdown /s</span></td>
+                            <td class="description">Выключить компьютер</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">shutdown /r</span></td>
+                            <td class="description">Перезагрузить компьютер</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">shutdown /a</span></td>
+                            <td class="description">Отменить выключение</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">calc</span></td>
+                            <td class="description">Открыть калькулятор</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">mspaint</span></td>
+                            <td class="description">Открыть Paint</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">explorer .</span></td>
+                            <td class="description">Открыть текущую папку в Проводнике</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔄 Операторы и перенаправление</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 30%">Оператор</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">команда1 & команда2</span></td>
+                            <td class="description">Выполнить обе команды последовательно</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда1 && команда2</span></td>
+                            <td class="description">Выполнить команда2 только если команда1 успешна</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда1 || команда2</span></td>
+                            <td class="description">Выполнить команда2 только если команда1 неуспешна</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда > файл</span></td>
+                            <td class="description">Перенаправить вывод в файл (перезапись)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда >> файл</span></td>
+                            <td class="description">Добавить вывод в конец файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда1 | команда2</span></td>
+                            <td class="description">Передать вывод команда1 в команда2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            💡 Совет: команды CMD не чувствительны к регистру. Вы можете писать их как заглавными, так и строчными буквами
+        </footer>
+    </div>
+</body>
+</html>

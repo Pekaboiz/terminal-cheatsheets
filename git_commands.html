@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git - Шпаргалка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #f56565;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f56565;
+            font-size: 1.8em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background-color: #fff5f5;
+        }
+        
+        .command {
+            font-family: 'Courier New', monospace;
+            background-color: #2d3748;
+            color: #f56565;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .description {
+            color: #4a5568;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Назад к списку</a>
+            <h1>🔀 Git</h1>
+            <p class="subtitle">Система контроля версий</p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🚀 Начало работы</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git init</span></td>
+                            <td class="description">Создать новый репозиторий</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git clone url</span></td>
+                            <td class="description">Клонировать удаленный репозиторий</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git config --global user.name "Имя"</span></td>
+                            <td class="description">Установить имя пользователя</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git config --global user.email "email"</span></td>
+                            <td class="description">Установить email</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git config --list</span></td>
+                            <td class="description">Посмотреть все настройки</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📝 Базовые команды</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git status</span></td>
+                            <td class="description">Статус репозитория</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git add файл</span></td>
+                            <td class="description">Добавить файл в staging</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git add .</span></td>
+                            <td class="description">Добавить все измененные файлы</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git add -A</span></td>
+                            <td class="description">Добавить все файлы (включая удаленные)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git commit -m "сообщение"</span></td>
+                            <td class="description">Создать коммит с сообщением</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git commit -am "сообщение"</span></td>
+                            <td class="description">Добавить и закоммитить изменения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git diff</span></td>
+                            <td class="description">Показать изменения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git diff --staged</span></td>
+                            <td class="description">Изменения в staging</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🌿 Ветки</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git branch</span></td>
+                            <td class="description">Список веток</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git branch имя</span></td>
+                            <td class="description">Создать новую ветку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git branch -d имя</span></td>
+                            <td class="description">Удалить ветку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git branch -D имя</span></td>
+                            <td class="description">Принудительно удалить ветку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git checkout имя</span></td>
+                            <td class="description">Переключиться на ветку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git checkout -b имя</span></td>
+                            <td class="description">Создать и переключиться на новую ветку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git switch имя</span></td>
+                            <td class="description">Переключиться на ветку (новый синтаксис)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git merge ветка</span></td>
+                            <td class="description">Слить ветку в текущую</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git merge --abort</span></td>
+                            <td class="description">Отменить слияние</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📤 Удаленные репозитории</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git remote</span></td>
+                            <td class="description">Список удаленных репозиториев</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git remote -v</span></td>
+                            <td class="description">Показать URL репозиториев</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git remote add origin url</span></td>
+                            <td class="description">Добавить удаленный репозиторий</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git remote remove origin</span></td>
+                            <td class="description">Удалить удаленный репозиторий</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git fetch</span></td>
+                            <td class="description">Получить изменения (без слияния)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git pull</span></td>
+                            <td class="description">Получить и слить изменения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git pull --rebase</span></td>
+                            <td class="description">Получить с перебазированием</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git push</span></td>
+                            <td class="description">Отправить изменения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git push -u origin ветка</span></td>
+                            <td class="description">Отправить новую ветку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git push --force</span></td>
+                            <td class="description">Принудительная отправка (осторожно!)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📜 История</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git log</span></td>
+                            <td class="description">История коммитов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git log --oneline</span></td>
+                            <td class="description">Краткая история</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git log --graph</span></td>
+                            <td class="description">История с графом веток</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git log --all --graph --oneline</span></td>
+                            <td class="description">Полная визуализация истории</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git log -p</span></td>
+                            <td class="description">История с изменениями</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git log --author="имя"</span></td>
+                            <td class="description">Коммиты автора</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git show хеш</span></td>
+                            <td class="description">Показать конкретный коммит</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git blame файл</span></td>
+                            <td class="description">Кто изменял каждую строку</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>↩️ Отмена изменений</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git reset файл</span></td>
+                            <td class="description">Убрать файл из staging</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git reset --soft HEAD~1</span></td>
+                            <td class="description">Отменить последний коммит (изменения сохранятся)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git reset --hard HEAD~1</span></td>
+                            <td class="description">Отменить коммит и изменения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git reset --hard хеш</span></td>
+                            <td class="description">Вернуться к конкретному коммиту</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git checkout -- файл</span></td>
+                            <td class="description">Отменить изменения в файле</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git restore файл</span></td>
+                            <td class="description">Отменить изменения (новый синтаксис)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git restore --staged файл</span></td>
+                            <td class="description">Убрать из staging</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git revert хеш</span></td>
+                            <td class="description">Создать коммит, отменяющий изменения</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git clean -fd</span></td>
+                            <td class="description">Удалить неотслеживаемые файлы</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔖 Теги</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git tag</span></td>
+                            <td class="description">Список тегов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git tag имя</span></td>
+                            <td class="description">Создать легковесный тег</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git tag -a v1.0 -m "версия 1.0"</span></td>
+                            <td class="description">Создать аннотированный тег</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git tag -d имя</span></td>
+                            <td class="description">Удалить локальный тег</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git push origin имя</span></td>
+                            <td class="description">Отправить тег на сервер</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git push origin --tags</span></td>
+                            <td class="description">Отправить все теги</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>💾 Временное сохранение</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git stash</span></td>
+                            <td class="description">Сохранить изменения временно</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git stash save "описание"</span></td>
+                            <td class="description">Сохранить с описанием</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git stash list</span></td>
+                            <td class="description">Список сохраненных изменений</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git stash pop</span></td>
+                            <td class="description">Применить и удалить последнее сохранение</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git stash apply</span></td>
+                            <td class="description">Применить, но не удалять</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git stash drop</span></td>
+                            <td class="description">Удалить последнее сохранение</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git stash clear</span></td>
+                            <td class="description">Удалить все сохранения</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔍 Поиск</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git grep "текст"</span></td>
+                            <td class="description">Поиск текста в файлах</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git log -S "текст"</span></td>
+                            <td class="description">Найти коммиты, изменившие текст</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git log --grep="текст"</span></td>
+                            <td class="description">Поиск в сообщениях коммитов</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>⚙️ Продвинутые команды</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">git rebase ветка</span></td>
+                            <td class="description">Перебазировать текущую ветку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git rebase -i HEAD~3</span></td>
+                            <td class="description">Интерактивное перебазирование</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git cherry-pick хеш</span></td>
+                            <td class="description">Применить конкретный коммит</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git reflog</span></td>
+                            <td class="description">История перемещений HEAD</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git bisect start</span></td>
+                            <td class="description">Начать бинарный поиск бага</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git submodule add url</span></td>
+                            <td class="description">Добавить подмодуль</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">git submodule update --init</span></td>
+                            <td class="description">Инициализировать подмодули</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            💡 Совет: используйте <strong>git status</strong> часто, чтобы понимать текущее состояние репозитория
+        </footer>
+    </div>
+</body>
+</html>

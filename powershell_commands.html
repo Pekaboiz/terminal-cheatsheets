@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerShell - Шпаргалка</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 1;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #4299e1;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4299e1;
+            font-size: 1.8em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        tr:hover {
+            background-color: #ebf8ff;
+        }
+        
+        .command {
+            font-family: 'Courier New', monospace;
+            background-color: #2d3748;
+            color: #4299e1;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .description {
+            color: #4a5568;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-link">← Назад к списку</a>
+            <h1>💠 PowerShell</h1>
+            <p class="subtitle">Мощная командная оболочка Windows</p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📁 Навигация и файлы</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Get-Location</span> или <span class="command">pwd</span></td>
+                            <td class="description">Показать текущую директорию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Set-Location путь</span> или <span class="command">cd</span></td>
+                            <td class="description">Перейти в директорию</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-ChildItem</span> или <span class="command">ls</span></td>
+                            <td class="description">Список файлов и папок</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-ChildItem -Force</span></td>
+                            <td class="description">Показать скрытые файлы</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">New-Item -ItemType Directory -Name "папка"</span></td>
+                            <td class="description">Создать папку</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">New-Item -ItemType File -Name "файл.txt"</span></td>
+                            <td class="description">Создать файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Remove-Item файл</span> или <span class="command">rm</span></td>
+                            <td class="description">Удалить файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Remove-Item -Recurse папка</span></td>
+                            <td class="description">Удалить папку со всем содержимым</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Copy-Item источник цель</span></td>
+                            <td class="description">Скопировать файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Move-Item источник цель</span></td>
+                            <td class="description">Переместить или переименовать</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Rename-Item старое новое</span></td>
+                            <td class="description">Переименовать файл</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📄 Работа с содержимым</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Get-Content файл</span> или <span class="command">cat</span></td>
+                            <td class="description">Вывести содержимое файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-Content файл -Head 10</span></td>
+                            <td class="description">Первые 10 строк</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-Content файл -Tail 10</span></td>
+                            <td class="description">Последние 10 строк</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Set-Content файл "текст"</span></td>
+                            <td class="description">Записать текст в файл</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Add-Content файл "текст"</span></td>
+                            <td class="description">Добавить текст в конец файла</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Select-String "текст" файл</span></td>
+                            <td class="description">Поиск текста в файле</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">notepad файл</span></td>
+                            <td class="description">Открыть в Блокноте</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">code файл</span></td>
+                            <td class="description">Открыть в VS Code</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔧 Системная информация</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Get-ComputerInfo</span></td>
+                            <td class="description">Полная информация о компьютере</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-Process</span></td>
+                            <td class="description">Список процессов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Stop-Process -Name "имя"</span></td>
+                            <td class="description">Завершить процесс по имени</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Stop-Process -Id PID</span></td>
+                            <td class="description">Завершить процесс по ID</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-Service</span></td>
+                            <td class="description">Список служб Windows</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Start-Service "имя"</span></td>
+                            <td class="description">Запустить службу</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Stop-Service "имя"</span></td>
+                            <td class="description">Остановить службу</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-PSDrive</span></td>
+                            <td class="description">Список дисков и подключений</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-WmiObject Win32_LogicalDisk</span></td>
+                            <td class="description">Информация о дисках</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">$env:USERNAME</span></td>
+                            <td class="description">Текущий пользователь</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">$env:COMPUTERNAME</span></td>
+                            <td class="description">Имя компьютера</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🌐 Сеть</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Test-Connection адрес</span></td>
+                            <td class="description">Проверить доступность (аналог ping)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-NetIPAddress</span></td>
+                            <td class="description">IP-адреса сетевых интерфейсов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-NetAdapter</span></td>
+                            <td class="description">Список сетевых адаптеров</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Test-NetConnection адрес -Port 80</span></td>
+                            <td class="description">Проверить доступность порта</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Invoke-WebRequest url</span></td>
+                            <td class="description">HTTP запрос (аналог curl)</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Invoke-RestMethod url</span></td>
+                            <td class="description">REST API запрос</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-NetTCPConnection</span></td>
+                            <td class="description">Активные TCP соединения</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔒 Права и безопасность</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Get-Acl файл</span></td>
+                            <td class="description">Посмотреть права доступа</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Start-Process powershell -Verb RunAs</span></td>
+                            <td class="description">Запустить PowerShell как администратор</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-ExecutionPolicy</span></td>
+                            <td class="description">Текущая политика выполнения скриптов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Set-ExecutionPolicy RemoteSigned</span></td>
+                            <td class="description">Разрешить локальные скрипты</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>🔍 Поиск и фильтрация</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Get-ChildItem -Recurse -Filter "*.txt"</span></td>
+                            <td class="description">Найти все .txt файлы рекурсивно</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | Where-Object {условие}</span></td>
+                            <td class="description">Фильтрация объектов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | Select-Object -First 10</span></td>
+                            <td class="description">Первые 10 результатов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | Sort-Object Name</span></td>
+                            <td class="description">Сортировка по имени</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | Measure-Object</span></td>
+                            <td class="description">Подсчет объектов</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | Format-Table</span></td>
+                            <td class="description">Вывод в виде таблицы</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | Format-List</span></td>
+                            <td class="description">Вывод в виде списка</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">команда | Out-GridView</span></td>
+                            <td class="description">Вывод в интерактивное окно</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>⚡ Полезные команды</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Get-Command</span></td>
+                            <td class="description">Список всех доступных команд</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-Help команда</span></td>
+                            <td class="description">Справка по команде</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-Help команда -Examples</span></td>
+                            <td class="description">Примеры использования</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-Alias</span></td>
+                            <td class="description">Список псевдонимов команд</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Clear-Host</span> или <span class="command">cls</span></td>
+                            <td class="description">Очистить экран</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Get-History</span></td>
+                            <td class="description">История команд</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">exit</span></td>
+                            <td class="description">Выход из PowerShell</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">$PSVersionTable</span></td>
+                            <td class="description">Версия PowerShell</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="section">
+                <h2>📦 Модули и пакеты</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 35%">Команда</th>
+                            <th>Описание</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="command">Get-Module -ListAvailable</span></td>
+                            <td class="description">Список доступных модулей</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Import-Module имя</span></td>
+                            <td class="description">Загрузить модуль</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Install-Module имя</span></td>
+                            <td class="description">Установить модуль из галереи</td>
+                        </tr>
+                        <tr>
+                            <td><span class="command">Update-Module имя</span></td>
+                            <td class="description">Обновить модуль</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            💡 PowerShell использует командлеты (cmdlets) в формате <strong>Глагол-Существительное</strong>, например Get-Item, Set-Location
+        </footer>
+    </div>
+</body>
+</html>
